@@ -1,0 +1,6 @@
+*.rbxl
+*.rbxlx
+*.rbxm
+Packages/
+sourcemap.json
+.vscode/

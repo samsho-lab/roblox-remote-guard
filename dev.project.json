@@ -1,0 +1,16 @@
+{
+	"name": "RemoteGuardDev",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"RemoteGuard": {
+				"$path": "src"
+			}
+		},
+		"ServerScriptService": {
+			"Example": {
+				"$path": "examples/Shop.server.luau"
+			}
+		}
+	}
+}

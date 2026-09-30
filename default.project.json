@@ -1,0 +1,6 @@
+{
+	"name": "RemoteGuard",
+	"tree": {
+		"$path": "src"
+	}
+}

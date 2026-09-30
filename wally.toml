@@ -1,0 +1,9 @@
+[package]
+name = "samsho-lab/remote-guard"
+description = "Validation, rate limiting and cleanup helpers for Roblox RemoteEvents"
+version = "0.1.0"
+license = "MIT"
+authors = ["Oluwaseun Shorunke"]
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+include = ["src", "default.project.json", "wally.toml", "LICENSE", "README.md"]
