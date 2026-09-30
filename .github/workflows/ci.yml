@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Luau
+        run: |
+          curl -sSL -o luau.zip https://github.com/luau-lang/luau/releases/latest/download/luau-ubuntu.zip
+          unzip -q luau.zip -d "$HOME/luau"
+          echo "$HOME/luau" >> "$GITHUB_PATH"
+
+      - name: Type check (strict)
+        run: luau-analyze src/Schema.luau src/RateLimiter.luau src/Guard.luau src/Janitor.luau tests
+
+      - name: Run tests
+        run: luau tests/run.luau
+
+  rojo-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rojo
+        run: |
+          curl -sSL -o rojo.zip https://github.com/rojo-rbx/rojo/releases/download/v7.4.4/rojo-7.4.4-linux-x86_64.zip
+          unzip -q rojo.zip -d "$HOME/rojo"
+          echo "$HOME/rojo" >> "$GITHUB_PATH"
+
+      - name: Build model and dev place
+        run: |
+          rojo build default.project.json -o RemoteGuard.rbxm
+          rojo build dev.project.json -o RemoteGuardDev.rbxl
